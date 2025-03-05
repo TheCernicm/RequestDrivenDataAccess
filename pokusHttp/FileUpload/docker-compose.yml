@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  fileupload:
+    image: ${DOCKER_REGISTRY-}fileupload
+    build:
+      context: .
+      dockerfile: FileUpload/Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=file.database
+      - REDIS_PORT=6379
+    depends_on:
+      - file.database
+    networks:
+      - webnet
+    
+  file.database:
+    image: redis/redis-stack-server
+    container_name: file.database
+    volumes:
+      - redis_data:/data
+    networks:
+      - webnet
+
+volumes:
+  redis_data:
+
+networks:
+  webnet:
