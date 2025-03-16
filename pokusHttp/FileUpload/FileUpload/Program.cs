@@ -36,6 +36,12 @@ namespace FileUpload
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}"
             );
+            app.MapControllerRoute(
+                name: "getFiles",
+                pattern: "Home/GetFiles",
+                defaults: new { controller = "Home", action = "GetFiles" }
+            );
+
 
             app.Run();
         }
