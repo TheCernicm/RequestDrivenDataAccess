@@ -23,7 +23,7 @@ Formát na post je:
 - text: wantedFormat
 - file: file 
 
-Uživatel může získat první soubor ve frontě přes get `http://localhost:5000/api/file`. Tímto způsobem uživatel dostane poslední upravený soubor z databáze. 
+Uživatel může získat první soubor ve frontě přes get `http://localhost:5000/api/file`, nebo přes  `http://localhost:5000/home/getfile`. Tímto způsobem uživatel dostane poslední upravený soubor z databáze. 
 Čímž ho i odstraní. Aplikace dokáže zpracovávat až 4 soubory najednou. 
 
 ### Dodatečné informace
