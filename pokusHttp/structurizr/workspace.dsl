@@ -47,7 +47,7 @@ workspace "Name" "Description" {
         ss.ui.gf -> ss.ap.gf "requests for file and its informations"
         ss.ap.gf -> ss.fb.dt "requests first file in the queue and its informations"
         ss.fb.dt -> ss.ap.gf "sends file and its informations"
-        ss.ap -> ss.ui.gf "gets file and its informations"
+        ss.ap.gf -> ss.ui.gf "gets file and its informations"
         ss.ui.gf -> u "shows file and its informations"
         
     }
