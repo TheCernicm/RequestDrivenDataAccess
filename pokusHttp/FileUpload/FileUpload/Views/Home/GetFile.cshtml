@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Get Processed File";
+}
+
+<h2>Get File</h2>
+
+<button id="fetchFile">Fetch File</button>
+
+<div id="fileResult"></div>
+
+<script>
+    document.getElementById("fetchFile").addEventListener("click", function () {
+        fetch("/api/File")
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => { throw new Error(text); });
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("fileResult").innerHTML =
+                    `<p><strong>File ID:</strong> ${data.fileId}</p>
+                     <p><strong>User:</strong> ${data.userName}</p>
+                     <p><strong>Content:</strong> <pre>${data.content}</pre></p>`;
+            })
+            .catch(error => {
+                document.getElementById("fileResult").innerHTML = `<p style="color: red;">${error.message}</p>`;
+            });
+    });
+</script>
+<p>
+    <a href="/Home/Index">Go to File Upload</a>
+</p>
